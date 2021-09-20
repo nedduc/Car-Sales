@@ -65,6 +65,27 @@ def update_sales_worksheet(data):
     print("Sales worksheet updated successfully.\n")
 
 
+def calculate_surplus_data(sales_row):
+    """
+    Compare sales with car stock and calulate the surplus if needed.
+    The surplus is defines as the sales digure subtracted from stock:
+    -Positive surplus indicates, cars in stock.
+    -Negative surplus indicates cars that had to be ordered in.
+    """
+    print("Calculating surplus data...\n")
+    stock = SHEET.worksheet("stock").get_all_values()
+    stock_row = stock[-1]
+    print(stock_row)
+
+
+def main():
+    """
+    Run all program functions
+    """
 data = get_sales_data()
 sales_data = [int(num) for num in data]
 update_sales_worksheet(sales_data)
+calculate_surplus_data(sales_data)
+
+print("Welcome to Car Sales Data Automation")
+main()
