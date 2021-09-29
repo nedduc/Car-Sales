@@ -21,7 +21,7 @@ def get_sales_data():
     The loope will repeat request, until valid.
     """
     while True:
-        print("Please enter car sales data from the last day of sales")
+        print("Please enter car sales data for each day of sales\n")
         print("Data should be six numbers, seperated by commas.")
         print("Example: 10,20,30,40,50,60\n")
 
@@ -49,7 +49,7 @@ def check_data(values):
                 f"Exactly 6 values required, you provided {len(values)}"
             )
     except ValueError as e:
-        print(f"Invalid data: {e}, please try again.\n")
+        print(f"Invalid information: {e}, please try again.\n")
         return False
 
     return True
@@ -65,7 +65,7 @@ def update_sales_worksheet(data):
     print("Car sales worksheet updated successfully.\n")
 
 
-def calculate_surplus_data(sales_row):
+def calculate_unsold_data(sales_row):
     """
     Compare sales with car stock and calulate the surplus if needed.
     The surplus is defines as the sales data subtracted from stock:
@@ -76,11 +76,11 @@ def calculate_surplus_data(sales_row):
     stock = SHEET.worksheet("stock").get_all_values()
     stock_row = stock[-1]
 
-    surplus_data = []
+    unsold_data = []
     for stock, sales in zip(stock_row, sales_row):
-        surplus = int(stock) - sales
-        surplus_data.append(surplus)
-    return surplus_data
+        unsold = int(stock) - sales
+        unsold_data.append(unsold)
+    return unsold_data
 
 
 def main():
@@ -90,9 +90,9 @@ def main():
     data = get_sales_data()
     sales_data = [int(num) for num in data]
     update_sales_worksheet(sales_data)
-    calculate_surplus_data(sales_data)
-    new_surplus_data = calculate_surplus_data(sales_data)
-    print(new_surplus_data)
+    calculate_unsold_data(sales_data)
+    new_unsold_data = calculate_unsold_data(sales_data)
+    print(new_unsold_data)
 
 
 print("Welcome to Car Sales Data Automation")
