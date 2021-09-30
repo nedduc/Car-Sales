@@ -65,12 +65,22 @@ def update_sales_worksheet(data):
     print("Car sales worksheet updated successfully.\n")
 
 
+def update_unsold_worksheet(data):
+    """
+    Update unsold cars worksheet, add new row with provided data.
+    """
+    print("Updating unsold worksheet...\n")
+    unsold_worksheet = SHEET.worksheet("unsold")
+    unsold_worksheet.append_row(data)
+    print("Car sales worksheet updated successfully.\n")
+
+
 def calculate_unsold_data(sales_row):
     """
-    Compare sales with car stock and calulate the surplus if needed.
-    The surplus is defines as the sales data subtracted from stock:
-    -Positive surplus indicates, cars in stock.
-    -Negative surplus indicates cars that had to be ordered in.
+    Compare sales with car stock and calulate the unsold cars.
+    The unsold is defined as the sales data subtracted from stock:
+    -Positive unsold indicates, cars in stock.
+    -Negative unsold indicates cars that had to be ordered in.
     """
     print("Calculating unsold cars each day...\n")
     stock = SHEET.worksheet("stock").get_all_values()
@@ -80,6 +90,7 @@ def calculate_unsold_data(sales_row):
     for stock, sales in zip(stock_row, sales_row):
         unsold = int(stock) - sales
         unsold_data.append(unsold)
+        
     return unsold_data
 
 
