@@ -55,32 +55,22 @@ def check_data(values):
     return True
 
 
-def update_sales_worksheet(data):
+def update_worksheet(data, worksheet):
     """
-    Update worksheet for car sales, add new row when the data is provided.
+    Receives a list of numbers to be inserted into worksheet
+    update the correct worksheet with data inserted
     """
-    print("Updating sales worksheet...\n")
-    sales_worksheet = SHEET.worksheet("sales")
-    sales_worksheet.append_row(data)
-    print("Car sales worksheet updated successfully.\n")
-
-
-def update_unsold_worksheet(data):
-    """
-    Update unsold cars worksheet, add new row with provided data.
-    """
-    print("Updating unsold worksheet...\n")
-    unsold_worksheet = SHEET.worksheet("unsold")
-    unsold_worksheet.append_row(data)
-    print("Car sales worksheet updated successfully.\n")
+    print(f"Updating {worksheet} worksheet...\n")
+    worksheeet_to_update = SHEET.worksheet(worksheet)
+    worksheeet_to_update.append_row(data)
+    print(f"{worksheet} worksheet updated successfully\n")
 
 
 def calculate_unsold_data(sales_row):
     """
-    Compare sales with car stock and calulate the unsold cars.
-    The unsold is defined as the sales data subtracted from stock:
-    -Positive unsold indicates, cars in stock.
-    -Negative unsold indicates cars that had to be ordered in.
+    Stock minus car sales equals unsold cars:
+    -Positive indicates, cars in stock.
+    -Negative indicates cars to pre-ordered in.
     """
     print("Calculating unsold cars each day...\n")
     stock = SHEET.worksheet("stock").get_all_values()
@@ -90,7 +80,7 @@ def calculate_unsold_data(sales_row):
     for stock, sales in zip(stock_row, sales_row):
         unsold = int(stock) - sales
         unsold_data.append(unsold)
-        
+
     return unsold_data
 
 
@@ -100,10 +90,9 @@ def main():
     """
     data = get_sales_data()
     sales_data = [int(num) for num in data]
-    update_sales_worksheet(sales_data)
-    calculate_unsold_data(sales_data)
+    update_worksheet(sales_data, "sales")
     new_unsold_data = calculate_unsold_data(sales_data)
-    print(new_unsold_data)
+    update_worksheet(new_unsold_data, "unsold")
 
 
 print("Welcome to Car Sales Data Automation")
