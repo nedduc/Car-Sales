@@ -84,9 +84,24 @@ def calculate_unsold_data(sales_row):
     return unsold_data
 
 
+def get_last_5_car_entries_sales():
+    """
+    Data list from last 5 entries of car sales on each model
+    """
+    sales = SHEET.worksheet("sales")
+
+    columns = []
+    for ind in range(1, 7):
+        column = sales.col_values(ind)
+        columns.append(column[-5:])
+    return columns
+
+
 def main():
     """
-    Run all program functions
+    Run all program functions //
+    stock_data = calculate_stock_data(sales_columns)
+    update_worksheet(stock_data, "stock")
     """
     data = get_sales_data()
     sales_data = [int(num) for num in data]
@@ -97,3 +112,5 @@ def main():
 
 print("Welcome to Car Sales Data Automation")
 main()
+
+sales_columns = get_last_5_car_entries_sales()
