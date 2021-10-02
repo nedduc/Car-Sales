@@ -17,7 +17,7 @@ SHEET = GSPREAD_CLIENT.open('car-sales')
 def get_sales_data():
     """
     Get car sales input from user.
-    Run a while loop ro collect a valid string of data from user
+    Run a while loop to collect a valid string of data from user
     via the terminal, a string of 6 numbers seperated by commas.
     The loope will repeat request, until valid.
     """
@@ -39,7 +39,7 @@ def get_sales_data():
 
 def check_data(values):
     """
-    Inside the try statment, converts all strings values to intergers.
+    Inside the try statement, converts all strings values to intergers.
     Raise ValueError is strings can not be converted into intergers,
     or if there is not exactly 6 values entered.
     """
@@ -116,7 +116,7 @@ def calculate_stock_data(data):
 
 def main():
     """
-    Run all program functions
+    Run all programme functions
     """
     data = get_sales_data()
     sales_data = [int(num) for num in data]
