@@ -1,6 +1,5 @@
 import gspread
 from google.oauth2.service_account import Credentials
-from pprint import pprint
 
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
@@ -23,10 +22,11 @@ def get_sales_data():
     """
     while True:
         print("Please enter car sales data for each day of sales\n")
-        print("Data should be six numbers, seperated by commas.")
+        print("sedan coupe, sports car, station wagon, hatch back, sports suv")
+        print("Data should be six numbers, seperated by commas.\n")
         print("Example: 5,10,15,20,25,30\n")
 
-        data_str = input("Enter your car sales here: ")
+        data_str = input("Enter your car sales here:\n")
 
         sales_data = data_str.split(",")
 
@@ -102,13 +102,14 @@ def calculate_stock_data(data):
     """
     what needs to be ordered
     """
+    print("sedan coupe, sports car, station wagon, hatch back, sports suv")
     print("Replenish stock ...\n")
     new_stock_data = []
 
     for column in data:
         int_column = [int(num) for num in column]
-        bought = sum(int_column) / len(int_column)
-        stock_num = bought * 1
+        reorder = sum(int_column) / len(int_column)
+        stock_num = reorder * 1
         new_stock_data.append(round(stock_num))
 
     return new_stock_data
@@ -128,7 +129,7 @@ def main():
     print(stock_data)
 
 
-person = input("Enter your name: ")
+person = input("Enter your name:\n")
 
-pprint("Hello " + person + " this is your Car Sales Data Automation")
+print("Hello " + person + " this is your Car Sales Data Automation")
 main()
