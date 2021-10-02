@@ -2,120 +2,66 @@
 
 Python command-line application to manage car sales for a dealership knowing whom has entered in the data and the sales they have made for each day.
 When 'python3 run.py' is entered into the terminal a prompt will appear to ask your name, when this is entered, a personalised message appears to 
-ask you for car sales, it explains the way the data should be entered, how and where. Once you have correctly entered the data a message will
-appear to say you have a valid entry, this will repeat until there is a valid entry. The sales worksheet will be updated accordingly
+ask for your car sales for that day, it explains the way the data should be entered, how and where. Once you have correctly entered the data a message will
+appear to say you have a valid entry!, if you do not have a valid entry you will be asked again. The sales worksheet will be updated accordingly.
 As you can see from the flow chart below the comand line application will ask user to enter the car sales for each day, for:
+
 -  Sedan
 -  Coupe
 -  Sports car
--  station wagon
+-  Station wagon
 -  Hatch back
 -  Sports suv
 
 The comand-line application will update this information to the sales google sheet, update that google sheet below last data entry, tell you when this is
-updated sucessfully. Then it moves onto calculating what cars are left from each day of sales by subtracting sales from stock worksheet and updates the unsold cars worksheet below the last data enrty and informs the user that this has been completed. Ater completing those tasks it advise of stock to replenish.
+updated sucessfully. Then it moves onto calculating what cars are left from each day of sales by subtracting sales from stock worksheet and updates the unsold
+cars worksheet below the last data enrty and informs the user that this has been completed. Ater completing those tasks it advise of stock to replenish.
 
 The live link can be found here - https://github.com/nedduc/Car-Sales
 
 ![Flow Chart](assets/images/flow_chart.png)
 
-### Bugs to Fix
+### Bugs Located in assets/images folder
 
-![Bugs to fix](assets/images/bug1.png) (assets/images/rbug2.png) (assets/images/bug3.png) (assets/images/readme/mobile.png)
+![Bugs fixed](assets/images/bug1.png)
 
-- __The landing page__
+### Features left to Implement
 
-  - Simple, unclutterd landing page colours inspired by pantone 2021 colours
-  - Good layout of page items.
+- Other features to implement colours of cars bought (best selling colour)
+- Colunm for diseal vs petrol
+- Must-have features: Think backup camera, leather seats, Apple CarPlay, etc.
+- Lease or Buy
 
-- __The input window__ 
+### Validator Testing PEP8 online 
 
-  - When the page opens the cursor has been placed into the window input area so the user can immediately start typing a memo. 
-  - The input window has place holder text reading 'Type task and hit enter' inserted to give user advice on what to do. The text colour has been lightened so the user knows it's a place to fill in text. 
-  - If you do not enter text in this window and hit the enter key nothing will happen, you cannot have a empty line of text.
-
-- __Font Awesome__
-
-  - Icons used to indicate where to write, complete and delete.
-  - https://fontawesome.com/
-
-### Features Left to Implement
-
-- Other features to implement to create three icon links to seperate Memo-It list into work, rest and play.
-- Drag and drop feature for moving tasks between different lists.
-- Set up local storage for items to remain on list until deleted.
-- Sound effect on completed item.
-
-## Testing 
-
-Checks carried out on spelling, grammar and Punctuation. Most of the spelling and grammar will be inserted by user. I made sure that the input field worked and the item inserted would appear on the list. Title tags and meta data have good description for SEO.
-
-Responsive on all screen sizes from desktop to mobile, media query added for mobile to give more real estate to keyboard for data entry. I have also included vertical scroll bar.
-
-I discovered that on the toggle within javascript it did not like dealing with the font awesome icons that have a space. All variables used, have to be defined. Unexpected tokens are not allowed.
-
-Bugs screen shots located in readme folder, they have been resolved. 
-
-
-### Validator Testing 
-
-- HTML
-  - No errors were returned when passing through the official [W3C validator](https://validator.w3.org/)
-- CSS
-  - No errors were found when passing through the official [(Jigsaw) validator](https://jigsaw.w3.org/css-validator/)
-- JSHint
-  - No errors were found when passing through the official [(JSHint) validator](https://jshint.com/)
-- Lighthouse
-  - Overall report was 100%  /workspace/Memo-It/testing/Lighthouse-Report.png
-- DevTools
-  - Responsiveness on all devices.
-
-
-![Lighthouse](testing/Lighthouse-Report.png) 
+- (http://pep8online.com/)
+  - Input will be inserted by user. Testing was carried out with PEP8 online for python code. With no errors found.
+  
+![PEP8 online validator](assets/images/PEP8_online.png)
 
 ### Unfixed Bugs
-I was able to remove all bugs as they were easy enough to fix, once I did a bit of research to find out what each bug meant, most of my research was done on https://stackoverflow.com/ and https://www.w3schools.com/
+I was able to remove all bugs as they were easy enough to fix.
+most of my research was done on https://learn.codeinstitute.net/courses/, https://stackoverflow.com/ and https://www.w3schools.com/
 
-![bugs found](assets/images/readme/bug3.png) 
+## Deployment to Heroku
 
-## Deployment
+Heroku is a platform designed to host dynamic websites. While Github pages hosts projects built with front end languages like HTML, CSS and JavaScript,
+it's not built to host back end languages, which is why I have to use Heroku for this deployment. After using an Python essentials template
+from Code Institute, changes that needed to be made in order to deploy to Heroku.
 
-In order for someone to access, I must deploy site to Github from Gitpod the container-based development platform I have been using: 
-  - Make sure that I have "git added", "git commit -m" & "git push" to Github
-  - Once in Github, I navigated to my sites repository - https://github.com/nedduc
-  - Under my repository name, to the right of the screen click  Settings.
-  - Under my repository name, to the right of the screen click Settings.
-  - In the left sidebar, click Pages.
-  - Under “GitHub Pages”, use the None or Branch drop-down menu and select a publishing source.
-  - Optionally, use the drop-down menu to select a folder for my publishing source. 
+  - New line character '\n' needs to be added to the text inside the input method.
+  This is to be added as there is a quirk in the software used to create the mock terminal.
+  Without this extra line, the text for the import request will not show up in the terminal. 
+  - Create a list of requirements that our project needs to run. The template we used to create our Gitpod workspace installed several things,
+  and then we manually installed gspread and google-auth into the workspace as well. These packages are known as a dependencies. In order for
+  my project to run on Heroku I need to install these dependencies as well, this list will go into my requirements.txt file. to create the list, I type
+  'Pip3 freeze > requirements.txt' into the terminal. Heroku will serch for this exact file name as it build my project. hit enter and the requirements.txt has been updated.
+- Making sure all my recent file update has been to github.
+- Heruko free account has been created.
+- Importnat! another V=config Var needs to be added to Heroku settings to improve compatibility with various Python libraries.
 
 The live link can be found here - https://nedduc.github.io/Memo-It/
 
 ## Credits 
+(https://learn.codeinstitute.net/courses/course-v1:CodeInstitute+LS101+2021_T1/courseware/293ee9d8ff3542d3b877137ed81b9a5b/58d3e90f9a2043908c62f31e51c15deb/)
 (https://www.w3schools.com/)(https://www.youtube.com/channel/UC8n8ftV94ZU_DJLOLtrpORA)
-(https://fontawesome.com/)(Patient and kind tutors from Code Institute)
-
-### Content 
-
-- The icons on the page were taken from [Font Awesome](https://fontawesome.com/)
-
-### Media
-
-- The header image Photo by Sigmund on Unsplash https://unsplash.com/
-
-## Reminders
-
-* Code has been placed into the run.py
-* Your dependencies must be placed in the `requirements.txt` file
-* Do not edit any of the other files or your code may not deploy properly
-
-## Creating the Heroku app
-
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
-
-1. `heroku/python`
-2. `heroku/nodejs`
-
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
-
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
