@@ -90,12 +90,28 @@ def get_last_5_car_entries_sales():
     Data list from last 5 entries of car sales on each model
     """
     sales = SHEET.worksheet("sales")
-
     columns = []
     for ind in range(1, 7):
         column = sales.col_values(ind)
         columns.append(column[-5:])
+
     return columns
+
+
+def calculate_stock_data(data):
+    """
+    what needs to be ordered
+    """
+    print("Replenish stock ...\n")
+    new_stock_data = []
+
+    for column in data:
+        int_column = [int(num) for num in column]
+        bought = sum(int_column) / len(int_column)
+        stock_num = bought * 1
+        new_stock_data.append(round(stock_num))
+
+    return new_stock_data
 
 
 def main():
@@ -107,11 +123,12 @@ def main():
     update_worksheet(sales_data, "sales")
     new_unsold_data = calculate_unsold_data(sales_data)
     update_worksheet(new_unsold_data, "unsold")
+    sales_columns = get_last_5_car_entries_sales()
+    stock_data = calculate_stock_data(sales_columns)
+    print(stock_data)
 
 
 person = input("Enter your name: ")
 
 pprint("Hello " + person + " this is your Car Sales Data Automation")
-#main()
-
-sales_columns = get_last_5_car_entries_sales()
+main()
