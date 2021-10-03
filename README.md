@@ -1,4 +1,5 @@
 # Grand Auto _"where every car is a steal"_
+![Responsive](assets/images/herokuapp.png)
 
 Python command-line application to manage car sales for a dealership knowing whom has entered in the data and the sales they have made for each day.
 When 'python3 run.py' is entered into the terminal, a prompt will appear to ask your name, when this is entered, a personalised message appears to 
@@ -23,8 +24,9 @@ The live link can be found here - https://github.com/nedduc/Car-Sales
 ![Flow Chart](assets/images/flow_chart.png)
 
 ### Bugs
-I was able to remove all bugs as they were easy enough to fix.
-most of my research was done on https://learn.codeinstitute.net/courses/, https://stackoverflow.com/ and https://www.w3schools.com/
+I was able to remove all bugs as they were easy enough to fix. Mostly indentation or white spaces, to make a long line shorter on line 13 of python.
+Most of my research was done on https://learn.codeinstitute.net/courses/, https://stackoverflow.com/ and https://www.w3schools.com/
+
 ![Bugs fixed](assets/images/bug1.png)
 
 ### Features left to Implement
@@ -34,7 +36,7 @@ most of my research was done on https://learn.codeinstitute.net/courses/, https:
 - Must-have features: Think backup camera, leather seats, Apple CarPlay, etc.
 - Lease or Buy
 
-### Validator Testing PEP8 online 
+### PEP8 online Validator Testing  
 
 - (http://pep8online.com/)
   - Input will be inserted by user. Testing was carried out with PEP8 online for python code. With no errors found.
@@ -68,3 +70,4 @@ to your code to Github. Or you can choose to manually deploy using this deploy b
 ## Credits 
 (https://learn.codeinstitute.net/courses/course-v1:CodeInstitute+LS101+2021_T1/courseware/293ee9d8ff3542d3b877137ed81b9a5b/58d3e90f9a2043908c62f31e51c15deb/)
 (https://www.w3schools.com/)(https://www.youtube.com/channel/UC8n8ftV94ZU_DJLOLtrpORA)
+Tutor support without it, I would be stuck.
