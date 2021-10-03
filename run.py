@@ -10,7 +10,8 @@ SCOPE = [
     ]
 CREDS = None
 if os.environ.get('CREDS'):
-    CREDS = Credentials.from_service_account_info(json.loads(os.environ.get('CREDS')))
+    CREDS = Credentials.from_service_account_info(
+        json.loads(os.environ.get('CREDS')))
 else:
     CREDS = Credentials.from_service_account_file('creds.json')
 SCOPED_CREDS = CREDS.with_scopes(SCOPE)
